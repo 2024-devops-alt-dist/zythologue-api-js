@@ -1,0 +1,21 @@
+{
+  "name": "zythologue-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npx tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.1",
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  }
+}
