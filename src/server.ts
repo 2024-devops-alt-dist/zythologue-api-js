@@ -1,7 +1,18 @@
-import express, { Application } from "express";
-import app from "./app"
+import dotenv from "dotenv";
+dotenv.config();
+import app from "./app";
+import { pool } from "./db/config";
 
-const port = 3000;
+pool.connect()
+    .then(() => {
+        console.log("Connexion à PostgreSQL réussie");
 
-app.listen(port, () => {  console.log(`Server is running on http://localhost:${port}`)})
+        const PORT = 3000;
+
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((err) => console.error("Erreur de connexion à PostgreSQL", err));
+
 
