@@ -6,4 +6,4 @@ import { beersController } from "../controllers/beers";
 router.get("/", beersController.get);
 router.post("/", beersController.post);
 router.put("/", beersController.put);
-router.delete("/", beersController.delete);
+router.delete("/:id", beersController.delete);
