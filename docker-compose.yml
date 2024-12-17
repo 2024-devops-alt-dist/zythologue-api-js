@@ -14,5 +14,21 @@ services:
           - PostgreSQLdb-api-js:/var/lib/postgresql/data # Stockage des données
           - ./db-scripts:/docker-entrypoint-initdb.d/ # Chemin des scripts SQL pour l'initialisation de la base de données
 
+  api:
+      build: ./api # Chemin vers le Dockerfile de l'API
+      ports:
+        - "3000:3000"
+      depends_on:
+        - db
+      environment: # Pour plus de sécurité et n'avoir à les écrire qu'une fois on utilisera .env
+        DATABASE_HOST: ${DB_HOST}
+        DATABASE_PORT: ${DB_PORT}
+        DATABASE_USER: ${DB_USER}
+        DATABASE_PASSWORD: ${DB_PASSWORD}
+        DATABASE_NAME: ${DB_NAME}
+      volumes:
+        - ./api:/app
+        - /app/node_modules
+
 volumes:
   PostgreSQLdb-api-js:
