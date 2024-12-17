@@ -1,6 +1,9 @@
 import express, { Application } from "express";
 const app: Application = express()
 
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+
 const version = "v1";
 const path = `/api/${version}`;
 

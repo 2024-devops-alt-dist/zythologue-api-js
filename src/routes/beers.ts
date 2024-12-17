@@ -3,7 +3,8 @@ export const router = Router();
 
 import { beersController } from "../controllers/beers";
 
-router.get("/", beersController.get);
+router.get("/", beersController.getAll);
+router.get("/:id", beersController.getById)
 router.post("/", beersController.post);
-router.put("/", beersController.put);
+router.put("/:id", beersController.put);
 router.delete("/:id", beersController.delete);
