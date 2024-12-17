@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev api/src/server.ts",
     "clean": "rm -rf dist",
     "build": "npm run clean && npx tsc"
   },
