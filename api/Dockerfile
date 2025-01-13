@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm ci
+RUN chown -R node:node .
+RUN npm install
+RUN npm i --save-dev @types/cors
 
 COPY . .
 
