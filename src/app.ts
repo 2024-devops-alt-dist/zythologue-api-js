@@ -3,7 +3,7 @@ var cors = require('cors')
 const app: Application = express()
 import { setupSwagger } from "./swagger";
 const corsOptions = {
-    origin: ['http://localhost:3000/', 'http://localhost:5173/'], // Remplace par l'URL de ton front
+    origin: ['http://localhost:3000/', '*'], // Remplace par l'URL de ton front
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
   };

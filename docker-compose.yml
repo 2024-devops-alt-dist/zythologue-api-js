@@ -15,7 +15,7 @@ services:
           - ./db-scripts:/docker-entrypoint-initdb.d/ # Chemin des scripts SQL pour l'initialisation de la base de données
 
   api:
-      build: ./api # Chemin vers le Dockerfile de l'API
+      build: ./ # Chemin vers le Dockerfile de l'API
       ports:
         - "3000:3000"
       depends_on:

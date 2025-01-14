@@ -1,10 +1,10 @@
 FROM node:21-alpine
 
-WORKDIR /app
+WORKDIR /
 
 COPY package*.json .
 
-RUN chown -R node:node .
+
 RUN npm install
 RUN npm i --save-dev @types/cors
 
