@@ -21,7 +21,7 @@ export const beersController = {
             return
          }
         try {
-            const result = await pool.query("SELECT * FROM beer WHERE id = $1", [id]);
+            const result = await pool.query("SELECT beer.*, brewery.name as brewery, brewery.country as country, category.name as category FROM beer left join brewery ON brewery.id = beer.id_brewery left join category on category.id = beer.id_category WHERE beer.id=$1", [id]); 
 
             if (result.rows.length === 0) {
                 res.status(404).json({ error: `Bière avec l'ID ${id} introuvable` });
