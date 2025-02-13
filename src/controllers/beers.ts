@@ -13,6 +13,27 @@ export const beersController = {
             res.status(200).json({ msg: error, message: "y a une erreur" });
         }
     },
+    getByBreweryId: async (req: Request, res: Response): Promise<void> => {
+         const id = parseInt(req.params.id, 10);
+        
+        if (isNaN(id)) {
+            res.status(400).json({ message: 'ID invalide' });
+            return
+         }
+        try {
+            const result = await pool.query("SELECT * from beer WHERE id_brewery=$1", [id]); 
+
+            if (result.rows.length === 0) {
+                res.status(404).json({ error: `Bières de la brasserie avec l'ID ${id} introuvables` });
+                return;
+            }
+
+            res.status(200).json({ data: result.rows });
+        } catch (error) {
+            console.error(`Erreur lors de la récupération des bières de la brasserie d'id ${id}.`, error);
+            res.status(500).json({ error: "Erreur interne du serveur" });
+        } 
+    },
     getById: async (req: Request, res: Response): Promise<void> => {
         const id = parseInt(req.params.id, 10);
         
@@ -34,6 +55,7 @@ export const beersController = {
             res.status(500).json({ error: "Erreur interne du serveur" });
         }
     },
+    
     post: async (req: Request, res: Response): Promise<void> => {
            
             const { name,  description, abv, id_brewery, id_category }: Beer = req.body;

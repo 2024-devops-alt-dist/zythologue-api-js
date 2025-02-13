@@ -3,6 +3,8 @@ export const router = Router();
 
 import { beersController } from "../controllers/beers";
 
+
+
 /**
  * @swagger
  * /beers:
@@ -17,6 +19,7 @@ import { beersController } from "../controllers/beers";
  *         description: Liste des bières non trouvée.
  */
 router.get("/", beersController.getAll);
+
 
 /**
  * @swagger
@@ -39,6 +42,9 @@ router.get("/", beersController.getAll);
  *         description: Bière introuvable dans la base de données.
  */
 router.get("/:id", beersController.getById)
+
+router.get("/:id/brewery", beersController.getByBreweryId)
+
 
 /**
  * @swagger

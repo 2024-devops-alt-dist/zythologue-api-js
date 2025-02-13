@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "nodemon src/server.ts",
     "clean": "rm -rf dist",
     "build": "npm run clean && npx tsc"
   },
@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "nodemon": "^3.1.9",
     "pg": "^8.13.1",
     "swagger": "^0.7.5",
     "swagger-jsdoc": "^6.2.8",

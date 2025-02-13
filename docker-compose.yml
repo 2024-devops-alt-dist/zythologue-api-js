@@ -18,6 +18,7 @@ services:
       build: ./ # Chemin vers le Dockerfile de l'API
       ports:
         - "3000:3000"
+      command: npm run dev
       depends_on:
         - db
       environment: # Pour plus de sécurité et n'avoir à les écrire qu'une fois on utilisera .env
@@ -27,8 +28,7 @@ services:
         DB_PASSWORD: ${DB_PASSWORD}
         DB_NAME: ${DB_NAME}
       volumes:
-        - ./api:/app
-        - /app/node_modules
+        - ./src:/app
 
 volumes:
   PostgreSQLdb-api-js:
